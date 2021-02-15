@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supyp.bghouse.dao.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.supyp.bghouse.domain.entity.Room">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="price" jdbcType="REAL" property="price" />
+    <result column="houseType" jdbcType="VARCHAR" property="housetype" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="dir" jdbcType="VARCHAR" property="dir" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="isSell" jdbcType="INTEGER" property="issell" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+</mapper>

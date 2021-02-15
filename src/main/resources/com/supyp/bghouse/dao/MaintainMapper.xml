@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supyp.bghouse.dao.MaintainMapper">
+  <resultMap id="BaseResultMap" type="com.supyp.bghouse.domain.entity.Maintain">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="roomId" jdbcType="INTEGER" property="roomid" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="startTime" jdbcType="DATE" property="starttime" />
+    <result column="isEnd" jdbcType="INTEGER" property="isend" />
+    <result column="price" jdbcType="REAL" property="price" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
+  </resultMap>
+</mapper>
