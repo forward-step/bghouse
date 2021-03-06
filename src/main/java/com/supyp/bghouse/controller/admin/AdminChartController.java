@@ -147,21 +147,25 @@ GROUP BY
     @PostMapping("/report")
     public String report() throws JsonProcessingException {
         ChartReportDto res = new ChartReportDto();
-        System.out.println("时间: " + DateUtil.date2String(new Date()));
         res.setIncome(contractMapper.findPriceOfMonth(DateUtil.date2String(new Date())));
+        if(res.getIncome() == null){
+            res.setIncome((float) 0);
+        }
         res.setStaffSalary(this.getStaffSalary());
         List<ChartMaintainDto> data = maintainMapper.findMaintainPricesData(
                 DateUtil.date2StringByYearAndMonth(new Date()),
                 DateUtil.date2StringByYearAndMonth(new Date())
         );
-        System.out.println(DateUtil.date2StringByYearAndMonth(new Date()));
-        System.out.println(data);
         if(data.size() == 0){
             res.setMaintainPrice((float) 0);
         }else {
-            res.setMaintainPrice(data.get(0).getPrice());
+            ChartMaintainDto chartMaintainDto = data.get(0);
+            if(chartMaintainDto != null){
+                res.setMaintainPrice(data.get(0).getPrice());
+            }else{
+                res.setMaintainPrice((float) 0);
+            }
         }
-
         // 利润
         res.setProfit(
                 res.getIncome() - res.getStaffSalary() - res.getMaintainPrice()

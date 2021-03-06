@@ -74,6 +74,8 @@ public class AdminRoleController {
 
     @PostMapping("/findAll")
     public String findAll(PaginationDto paginationDto) throws JsonProcessingException {
+        System.out.println("================================");
+        System.out.println(paginationDto);
         PageInfo<Role> all = roleService.findAll(paginationDto);
         ArrayList<RoleDto> res_list = new ArrayList<>();
         PageInfo<RoleDto> res = new PageInfo<>();
