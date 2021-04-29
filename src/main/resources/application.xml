@@ -128,38 +128,30 @@
     <!--<bean id="jwtUtil" class="com.supyp.bghouse.utils.JWTUtil"></bean>-->
 
     <!-- 定时任务框架 -->
-    <!--<bean id="jobDetail1" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">-->
-        <!--<property name="jobClass" value="com.supyp.bghouse.job.MyJob"></property>-->
-        <!--<property name="group" value="group1"></property>-->
-        <!--<property name="name" value="myjob1"></property>-->
-    <!--</bean>-->
-    <!--<bean id="trigger1" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">-->
-        <!--<property name="jobDetail" ref="jobDetail1"></property>-->
-        <!--<property name="group" value="group1"></property>-->
-        <!--<property name="name" value="trigger1"></property>-->
-        <!--<property name="repeatInterval" value="5000"></property>-->
-    <!--</bean>-->
-
-    <!--<bean id="myJob2" class="com.supyp.bghouse.job.MyJob2"></bean>-->
-    <!--<bean id="jobDetail2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
-        <!--<property name="group" value="group1"></property>-->
-        <!--<property name="name" value="myjob2"></property>-->
-        <!--<property name="targetObject" ref="myJob2"></property>-->
-        <!--<property name="targetMethod" value="execute"></property>-->
-    <!--</bean>-->
-    <!--<bean id="trigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
-        <!--<property name="jobDetail" ref="jobDetail2"></property>-->
-        <!--<property name="group" value="group1"></property>-->
-        <!--<property name="name" value="trigger2"></property>-->
-        <!--<property name="cronExpression" value="0/5 * * * * ?"></property>-->
-    <!--</bean>-->
-
-    <!--<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
-        <!--<property name="triggers">-->
-            <!--<list>-->
-                <!--<ref bean="trigger1"></ref>-->
-                <!--<ref bean="trigger2"></ref>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean id="myJob2" class="com.supyp.bghouse.job.MyJob2"></bean>
+    <bean id="jobDetail2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="group1"></property>
+        <property name="name" value="myjob2"></property>
+        <property name="targetObject" ref="myJob2"></property>
+        <property name="targetMethod" value="execute"></property>
+    </bean>
+    <bean id="trigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail2"></property>
+        <property name="group" value="group1"></property>
+        <property name="name" value="trigger2"></property>
+        <!--
+        配置执行时间：
+        秒 ， 分 ， 时 ， 月内日期 ， 月 ， 周内日期 ， 年（可不写）
+        比如：0/5 * * * * ? ； 表示每五秒执行一次
+        0 0 12 * * ? ； 表示每天中午十二点触发
+        -->
+        <property name="cronExpression" value="0 0 12 * * ?"></property>
+    </bean>
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="trigger2"></ref>
+            </list>
+        </property>
+    </bean>
 </beans>

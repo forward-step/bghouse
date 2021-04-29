@@ -7,10 +7,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 import java.time.LocalTime;
 
 /*
-* 每天早上十点
-* 预约超时提醒
-* 入住提醒
-* 预警提醒
+* 测试用例 ， 无意义
 * */
 public class MyJob extends QuartzJobBean {
     @Override
